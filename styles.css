@@ -334,8 +334,8 @@ a.spec-hash { color: inherit; text-decoration: underline; font-weight: 700; }
   .wrap { padding: 0 20px; }
 }
 @media (max-width: 420px) {
-  .phone-wrap { height: 750px; }
-  .phone { width: 280px; height: 710px; gap: 8px; }
+  .phone-wrap { height: 740px; }
+  .phone { width: 300px; height: 700px; gap: 8px; transform: translateX(-50%) rotate(1deg); }
   .hero-title { font-size: 44px; }
   .tag-big { font-size: 22px; }
   .phone-bubble { font-size: 21px; }
