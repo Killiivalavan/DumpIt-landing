@@ -10,9 +10,6 @@
   --ground: #DDD8EE;
   --on-accent: #17142A;
 }
-/* Mascot SVG strokes/fills follow the active theme's ink */
-svg [stroke="#1B1630"] { stroke: var(--ink); }
-svg [fill="#1B1630"] { fill: var(--ink); }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -24,6 +21,7 @@ body {
   background: var(--ground);
   transition: background .25s ease;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 a { color: var(--ink); text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -113,15 +111,21 @@ a:hover { text-decoration: underline; }
 .micro { font-size: 15px; font-weight: 600; color: var(--muted); }
 
 /* phone mockup — Today screen (matches app screenshot) */
-.phone-wrap { flex: 0 0 auto; position: relative; width: 420px; height: 720px; max-width: 100%; }
+.phone-wrap { flex: 0 0 auto; position: relative; width: 420px; height: 740px; max-width: 100%; }
 .phone {
-  position: absolute; left: 84px; top: 20px; width: 300px; height: 680px;
-  border: 6px solid var(--ink); border-radius: 44px;
+  position: absolute; left: 60px; top: 20px; width: 300px; height: 700px;
+  border: 6px solid var(--ink); border-radius: 48px;
   background: var(--ground);
   box-shadow: 10px 10px 0 var(--ink);
-  padding: 24px 18px 96px; overflow: hidden; transform: rotate(3deg);
+  padding: 56px 18px 96px; overflow: hidden; transform: rotate(3deg);
   transition: background .25s ease;
   display: flex; flex-direction: column; gap: 10px;
+}
+/* Dynamic-Island-style notch */
+.phone::before {
+  content: ""; position: absolute; top: 14px; left: 50%;
+  width: 96px; height: 26px; transform: translateX(-50%);
+  background: var(--ink); border-radius: 999px;
 }
 .phone-date { font-size: 12px; font-weight: 700; color: var(--muted); }
 .phone-bubble {
@@ -175,7 +179,6 @@ a:hover { text-decoration: underline; }
 .phone-tab:not(.phone-tab-active):hover { background: rgba(27,22,48,.06); }
 .phone-tab-active { border-color: var(--ink); background: var(--accent); color: var(--on-accent); box-shadow: 3px 3px 0 var(--ink); }
 .phone-tab-active:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
-.mascot-fill-accent { fill: var(--accent); transition: fill .25s ease; }
 
 /* ---------- theme strip ---------- */
 .theme-section { padding-bottom: 88px; }
@@ -228,6 +231,7 @@ a:hover { text-decoration: underline; }
 .spec-row { display: flex; justify-content: space-between; gap: 16px; border-bottom: 2px dashed currentColor; padding-bottom: 10px; }
 .spec-row-last { border-bottom: 0; padding-bottom: 0; }
 .spec-hash { word-break: break-all; text-align: right; }
+a.spec-hash { color: inherit; text-decoration: underline; font-weight: 700; }
 .spec-note { font-size: 14px; font-weight: 600; margin-top: 16px; }
 
 /* privacy */
@@ -319,15 +323,36 @@ a:hover { text-decoration: underline; }
   .grid-3 { grid-template-columns: 1fr; }
   .faq-grid { grid-template-columns: 1fr; }
   .hero-grid { gap: 56px; }
-  .phone-wrap { width: 100%; max-width: 420px; margin: 0 auto; height: 720px; }
+  .phone-wrap { width: 100%; max-width: 420px; margin: 0 auto; height: 740px; }
   .phone { left: 50%; transform: translateX(-50%) rotate(3deg); }
+  .install-step { padding: 18px 20px; gap: 14px; }
+  .install-num { flex: 0 0 46px; height: 46px; font-size: 22px; }
+  .install-title { font-size: 20px; }
+  .step { padding: 24px; }
   .pile-1, .pile-2, .pile-3, .pile-4 { margin-left: 0; margin-right: 0; }
   .theme-card, .ios-card { padding: 28px 24px; }
   .wrap { padding: 0 20px; }
 }
 @media (max-width: 420px) {
-  .phone-wrap { height: 730px; }
-  .phone { width: 280px; height: 690px; }
+  .phone-wrap { height: 750px; }
+  .phone { width: 280px; height: 710px; gap: 8px; }
+  .hero-title { font-size: 44px; }
+  .tag-big { font-size: 22px; }
+  .phone-bubble { font-size: 21px; }
+  .phone-textbox { min-height: 112px; }
+  .week-num { font-size: 12px; }
   .btn { width: 100%; }
   .hero-cta .btn { width: 100%; }
+  /* header download button hidden on mobile */
+  .nav-links .btn { display: none; }
+  /* more air: theme picker → "Three steps" heading */
+  .theme-section { padding-bottom: 120px; }
+  /* more air: "Close it" card → "Everything lands in the pile" */
+  #how { padding-bottom: 128px; }
+  /* more air: privacy-policy line → iPhone card */
+  .privacy-foot { margin-bottom: 32px; }
+  /* less air: last FAQ card → queries line */
+  #faq { padding-bottom: 64px; }
+  /* more air: request-deletion line → footer */
+  #contact { padding-bottom: 128px; }
 }
