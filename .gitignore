@@ -1,0 +1,35 @@
+# Generated + secret files — never commit these.
+# config.js is built by `node inject-env.mjs` at deploy time.
+config.js
+.env
+
+# Example env file stays committed; real local overrides never do.
+*.local
+
+# App binaries — don't bloat the repo or the deployment.
+# (Cloudflare Pages free also caps files at 25 MB, which most APKs
+# exceed — host the APK on GitHub Releases instead. If you ever
+# intentionally want one in git: `git add -f file.apk`.)
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# Cloudflare tooling state (if you ever use wrangler CLIs).
+.wrangler/
+
+# Dependency + build leftovers (none today — future-proofing).
+node_modules/
+dist/
+*.log
+
+# OS + editor junk.
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+*.bak
+*.orig

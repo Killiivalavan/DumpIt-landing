@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request account deletion — DumpIt</title>
+  <meta name="description" content="Request deletion of your DumpIt account and all journal entries. No sign-in needed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 112'%3E%3Cpath d='M18 38 H102 L94 92 H26 Z' fill='%23E0608F' stroke='%2317142A' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="page">
+
+  <header class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="logo" href="./index.html">DumpIt.</a>
+      <div class="nav-links">
+        <a href="./index.html">← Back home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap section">
+      <span class="tag tag-rotate" style="font-size:15px">No sign-in needed.</span>
+      <h1 class="delete-title">Delete your account.</h1>
+      <p class="lede">Leave your account email below. I'll write back to confirm it's really you, then delete the account and every journal entry linked to it. Changed your mind? Just ignore that email — nothing happens without your YES.</p>
+
+      <form id="delete-form" class="mini-form mini-form-left" novalidate>
+        <label class="ios-label" for="delete-email">Account email</label>
+        <input id="delete-email" name="email" type="email" placeholder="the Gmail you signed in with" autocomplete="email" required maxlength="254">
+
+        <span class="ios-label" id="reason-label">Why are you leaving? (optional)</span>
+        <div class="reason-list" role="radiogroup" aria-labelledby="reason-label">
+          <label><input type="radio" name="reason" value="Prefer not to say" checked> Prefer not to say</label>
+          <label><input type="radio" name="reason" value="Don't use the app anymore"> Don't use the app anymore</label>
+          <label><input type="radio" name="reason" value="Privacy concerns"> Privacy concerns</label>
+          <label><input type="radio" name="reason" value="Switching to another app"> Switching to another app</label>
+          <label><input type="radio" name="reason" value="Too many emails"> Too many emails</label>
+        </div>
+
+        <label class="ios-label" for="delete-reason-detail">Anything else? (optional)</label>
+        <input id="delete-reason-detail" name="reason_detail" type="text" placeholder="Optional — helps a solo dev" maxlength="300" autocomplete="off">
+
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-accent" type="submit">Request deletion</button>
+        <p class="form-msg" id="delete-msg" role="status" hidden></p>
+      </form>
+
+      <div class="card steps-card">
+        <div class="steps-title">What happens next</div>
+        <ol>
+          <li>You submit your account email above.</li>
+          <li>I email you back — reply with YES, I WOULD LIKE TO DELETE MY ACCOUNT AND ALL RELATED DATA.</li>
+          <li>I delete the account and all linked entries within 7 days, then email you when it's done.</li>
+        </ol>
+      </div>
+
+      <p class="contact-line contact-line-left">Form not working? Email <a class="u" href="mailto:dev.killie@gmail.com?subject=Delete%20my%20DumpIt%20account">dev.killie@gmail.com</a> directly with the subject "Delete my DumpIt account".</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap mini-footer-inner">
+      <a href="./index.html">← Back to DumpIt.</a>
+    </div>
+  </footer>
+
+</div>
+<!-- Hidden theme hooks so a saved theme carries over to this page -->
+<div id="themeSwatches" style="display:none"></div>
+<span id="themeName" style="display:none"></span>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./app.js"></script>
+<script src="./config.js"></script>
+<script src="./forms.js"></script>
+</body>
+</html>
